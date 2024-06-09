@@ -1,0 +1,522 @@
+@charset "UTF-8";
+/* 
+	$maxW - ширина экрана с которой начинается изменение $value в меньшую сторону экрана до $minWidth (задана в var.scss)
+	$minW - ширина экрана на которой изменение $value прекращается на значении $mobSize
+*/
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #000;
+  font-size: 1.25rem;
+  font-family: Calibri, "sans-serif";
+  position: relative;
+  min-width: 320px;
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  line-height: 1.2;
+}
+body._lock {
+  overflow: hidden;
+}
+body._lock .body-wrapper {
+  overflow: hidden;
+}
+
+.body-wrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+address {
+  font-style: normal;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+}
+@media (max-width: 768.9px) {
+  main {
+    height: fit-content;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+/* // Счётчик для ul, ol
+
+// .list-counter
+.list-counter {
+	list-style-type: none;
+	counter-reset: item;
+
+	// .list-counter li
+	li {
+		position: relative;
+
+		//.list-counter li::before
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			counter-increment: item;
+			content: counter(item);
+		}
+	}
+} */
+img {
+  object-fit: cover;
+}
+
+button,
+input,
+textarea,
+fieldset {
+  color: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+  cursor: pointer;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+fieldset:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
+picture {
+  display: flex;
+}
+picture source {
+  width: 0;
+  height: 0;
+}
+picture img {
+  width: 100%;
+  height: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  --width: 1400px;
+  --padding: 30px;
+  max-width: calc(var(--width) + var(--padding) * 2);
+  margin: 0 auto;
+  padding: 0 var(--padding);
+}
+@media (max-width: 768.9px) {
+  .container {
+    --padding: 10px;
+  }
+}
+
+/*   // Работает как изменение font-weight, но с помощью box-shadow. Из-за чего текст не прыгает
+  &:hover {
+    text-shadow: 0 0 1px currentColor, 0 0 1px currentColor, 0 0 0.7px currentColor;
+  } */
+.cv__me {
+  position: sticky;
+  padding-top: calc(20px + 20 * ((100vw - 320px) / 1600));
+  padding-bottom: calc(20px + 20 * ((100vw - 320px) / 1600));
+  background-color: rgb(69, 61, 61);
+}
+@media (min-width: 1920px) {
+  .cv__me {
+    padding-top: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .cv__me {
+    padding-top: 20px;
+  }
+}
+@media (min-width: 1920px) {
+  .cv__me {
+    padding-bottom: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .cv__me {
+    padding-bottom: 20px;
+  }
+}
+.cv__me-container {
+  display: flex;
+  gap: 2.5rem;
+  gap: calc(20px + 20 * ((100vw - 320px) / 1600));
+}
+@media (min-width: 1920px) {
+  .cv__me-container {
+    gap: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .cv__me-container {
+    gap: 20px;
+  }
+}
+.cv__me-foto {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-grow: 1;
+  order: -1;
+  overflow: hidden;
+}
+.cv__me-foto picture,
+.cv__me-foto img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  max-width: calc(200px + 150 * ((100vw - 320px) / 1600));
+  max-height: calc(200px + 150 * ((100vw - 320px) / 1600));
+}
+@media (min-width: 1920px) {
+  .cv__me-foto picture,
+  .cv__me-foto img {
+    max-width: 350px;
+  }
+}
+@media (max-width: 320px) {
+  .cv__me-foto picture,
+  .cv__me-foto img {
+    max-width: 200px;
+  }
+}
+@media (min-width: 1920px) {
+  .cv__me-foto picture,
+  .cv__me-foto img {
+    max-height: 350px;
+  }
+}
+@media (max-width: 320px) {
+  .cv__me-foto picture,
+  .cv__me-foto img {
+    max-height: 200px;
+  }
+}
+.cv__me-why {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  color: #fff;
+}
+.cv-why {
+  text-align: center;
+}
+.cv-why__name {
+  font-size: calc(55px + 75 * ((100vw - 320px) / 1600));
+  font-weight: 800;
+  line-height: 0.8;
+  text-transform: uppercase;
+  max-width: 4.5em;
+  margin-bottom: calc(20px + 20 * ((100vw - 320px) / 1600));
+}
+@media (min-width: 1920px) {
+  .cv-why__name {
+    font-size: 130px;
+  }
+}
+@media (max-width: 320px) {
+  .cv-why__name {
+    font-size: 55px;
+  }
+}
+@media (min-width: 1920px) {
+  .cv-why__name {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .cv-why__name {
+    margin-bottom: 20px;
+  }
+}
+.cv-why__name span {
+  font-weight: 300;
+  text-transform: capitalize;
+}
+.cv-why__function {
+  position: relative;
+  width: fit-content;
+  font-size: 2.5rem;
+  font-size: calc(20px + 20 * ((100vw - 320px) / 1600));
+  margin: 0 auto;
+}
+@media (min-width: 1920px) {
+  .cv-why__function {
+    font-size: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .cv-why__function {
+    font-size: 20px;
+  }
+}
+.cv-why__function::before, .cv-why__function::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0.8em;
+  height: 0.125rem;
+  background-color: #fff;
+}
+.cv-why__function::before {
+  left: -1.2em;
+}
+.cv-why__function::after {
+  right: -1.2em;
+}
+.cv__wrapper {
+  display: flex;
+  flex-grow: 1;
+  background: linear-gradient(90deg, rgb(228, 223, 207) 0%, rgb(228, 223, 207) 50%, rgb(255, 255, 255) 50%, rgb(255, 255, 255) 100%);
+}
+.cv__wrapper-container {
+  display: flex;
+  color: rgb(69, 61, 61);
+}
+@media (max-width: 768.9px) {
+  .cv__wrapper-container {
+    flex-direction: column;
+    background-color: rgb(228, 223, 207);
+  }
+}
+.cv__wrapper section {
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+}
+@media (max-width: 768.9px) {
+  .cv__wrapper section:last-child {
+    padding-bottom: 5rem;
+  }
+}
+.cv__about {
+  flex-basis: 35%;
+  min-width: 18.75rem;
+  padding-right: 1.5625rem;
+}
+@media (max-width: 768.9px) {
+  .cv__about {
+    padding-right: 0;
+  }
+}
+.cv__about-block:not(:last-child) {
+  margin-bottom: 1.875rem;
+}
+.cv__about-title {
+  position: relative;
+  font-size: 1.875rem;
+  text-transform: uppercase;
+  margin-bottom: 0.9375rem;
+}
+.cv__about-title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -1.5625rem;
+  transform: translateY(-50%);
+  width: 40%;
+  height: 0.25rem;
+  background-color: rgb(69, 61, 61);
+  border-top-left-radius: 0.125rem;
+  border-bottom-left-radius: 0.125rem;
+}
+@media (max-width: 768.9px) {
+  .cv__about-title::before {
+    right: -0.9375rem;
+  }
+}
+.cv__exp {
+  padding-left: 3.125rem;
+  background-color: #fff;
+}
+@media (max-width: 768.9px) {
+  .cv__exp {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    padding-bottom: 3.75rem;
+    margin: 0 -0.625rem;
+  }
+}
+.cv-skill__item:not(:last-child) {
+  margin-bottom: 0.1875rem;
+}
+.cv-address__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3125rem;
+}
+.cv-address__item {
+  position: relative;
+  padding-left: 1.875rem;
+}
+@media (any-hover: hover) {
+  .cv-address__link:hover {
+    text-decoration: underline;
+  }
+}
+.cv-address__link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.cv-address__link--phone:before {
+  background-image: url(../img/icons/icons.svg#phone);
+}
+.cv-address__link--mail:before {
+  background-image: url(../img/icons/icons.svg#email);
+}
+.cv-address__link--telegram:before {
+  background-image: url(../img/icons/icons.svg#telegram);
+}
+.cv-exp__title {
+  margin-bottom: 0.625rem;
+}
+.cv-exp__list {
+  margin-top: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.cv-exp__item {
+  margin-bottom: 0.9375rem;
+}
+.cv-exp__item-job {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-bottom: 0.3125rem;
+}
+.cv-exp__item-position {
+  font-size: 1.25rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+.cv-exp__skills {
+  padding-left: 0.625rem;
+}
+.cv-projects__title {
+  font-size: 1.5625rem;
+  margin-bottom: 0.9375rem;
+}
+.cv-projects__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+.cv-projects__item {
+  position: relative;
+}
+.cv-projects__preview {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 8.125rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+  border-radius: 0.4375rem;
+  pointer-events: none;
+}
+@media (max-width: 1040px) {
+  .cv-projects__preview {
+    display: none;
+  }
+}
+@media (any-hover: hover) {
+  .cv-projects__link:hover .cv-projects__preview {
+    opacity: 1;
+  }
+}
+.cv-me p:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 520px) {
+  .cv__me-foto {
+    justify-content: center;
+  }
+  .cv__me-container {
+    flex-direction: column;
+  }
+}
+/* Стили для модального окна */
