@@ -481,6 +481,10 @@ picture img {
   gap: 0.3125rem;
 }
 .cv-projects__item {
+  display: flex;
+  justify-content: space-between;
+  row-gap: 40px;
+  max-width: 400px;
   position: relative;
 }
 .cv-projects__preview {
@@ -502,6 +506,9 @@ picture img {
   .cv-projects__preview {
     display: none;
   }
+}
+.cv-projects__source {
+  opacity: 0.7;
 }
 @media (any-hover: hover) {
   .cv-projects__link:hover .cv-projects__preview {
